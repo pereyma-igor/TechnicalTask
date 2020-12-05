@@ -23,11 +23,13 @@ namespace Task
 
             if (i == 1)
             {
+                Console.Clear();
                 Console.WriteLine("Вітаємо! Ви вибрали українську мову!");
                 CheckUkrainianNumbers();
             }
             else
             {
+                Console.Clear();
                 Console.WriteLine("Congratulation! You choose English!");
                 CheckEnglishNumbers();
             }
@@ -40,14 +42,19 @@ namespace Task
         {
             Console.WriteLine("Введіть число в форматі xxxxxx,xx! Число не повинне бути більшим за 2147483647,00");
             string str = Convert.ToString(Console.ReadLine());
-            while (!double.TryParse(str, out _) || str[str.Length - 3] != ',')
+            
+            while (!double.TryParse(str, out _) || str[str.Length - 3] != ',' || double.Parse(str) > 2147483647.00)
             {
                 Console.Clear();
                 Console.WriteLine("Невірно введене число! \n Введіть число в форматі xxxxxx,xx! Число не повинне бути більшим за 2147483647,00");
                 str = Convert.ToString(Console.ReadLine());
             }
+
+            Console.Clear();
+            Console.WriteLine(double.Parse(str));
             string strCurrency = "";
             string strCoins = "";
+            
             for (int i = 0; i < str.Length; i++)
             {
                 if (i < str.Length - 3)
@@ -67,14 +74,17 @@ namespace Task
 
         public static void CheckEnglishNumbers()
         {
+            Console.Clear();
             Console.WriteLine("Enter a number in the format xxxxxx.xx! The number should not exceed 2147483647.00");
             string str = Convert.ToString(Console.ReadLine());
-            //while (!double.TryParse(str.Replace('.', ','), out _) || str[str.Length - 3] != '.');
-            //{
-            //    Console.Clear();
-            //    Console.WriteLine("Invalid number entered! \nEnter a number in the format xxxxxx.xx! The number should not exceed 2147483647.00");
-            //    str = Convert.ToString(Console.ReadLine());
-            //}
+            while (str[^3] != '.'|| !double.TryParse(str.Replace('.', ','), out _) ||
+                double.Parse(str.Replace('.', ',')) > 2147483647.00)
+            {
+                Console.Clear();
+                Console.WriteLine("Invalid number entered! \nEnter a number in the format xxxxxx.xx! The number should not exceed 2147483647.00");
+                str = Convert.ToString(Console.ReadLine());
+            }
+            Console.Clear();
             Console.WriteLine(double.Parse(str.Replace('.', ',')));
             string strCurrency = "";
             string strCoins = "";
