@@ -1,0 +1,11 @@
+C:\Users\Pereyma Igor\Desktop\TechnicalTask\Task\Task\obj\Debug\netcoreapp3.0\Task.csprojAssemblyReference.cache
+C:\Users\Pereyma Igor\Desktop\TechnicalTask\Task\Task\obj\Debug\netcoreapp3.0\Task.AssemblyInfoInputs.cache
+C:\Users\Pereyma Igor\Desktop\TechnicalTask\Task\Task\obj\Debug\netcoreapp3.0\Task.AssemblyInfo.cs
+C:\Users\Pereyma Igor\Desktop\TechnicalTask\Task\Task\bin\Debug\netcoreapp3.0\Task.exe
+C:\Users\Pereyma Igor\Desktop\TechnicalTask\Task\Task\bin\Debug\netcoreapp3.0\Task.deps.json
+C:\Users\Pereyma Igor\Desktop\TechnicalTask\Task\Task\bin\Debug\netcoreapp3.0\Task.runtimeconfig.json
+C:\Users\Pereyma Igor\Desktop\TechnicalTask\Task\Task\bin\Debug\netcoreapp3.0\Task.runtimeconfig.dev.json
+C:\Users\Pereyma Igor\Desktop\TechnicalTask\Task\Task\bin\Debug\netcoreapp3.0\Task.dll
+C:\Users\Pereyma Igor\Desktop\TechnicalTask\Task\Task\bin\Debug\netcoreapp3.0\Task.pdb
+C:\Users\Pereyma Igor\Desktop\TechnicalTask\Task\Task\obj\Debug\netcoreapp3.0\Task.dll
+C:\Users\Pereyma Igor\Desktop\TechnicalTask\Task\Task\obj\Debug\netcoreapp3.0\Task.pdb
