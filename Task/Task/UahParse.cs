@@ -40,8 +40,8 @@ public class UahParse
         if (num > 2147483647) throw new ArgumentOutOfRangeException("val", "Параметр не може бути більшим за 2147483647.00");
         if (!male)
         {
-            frac20[1] = "одна ";
-            frac20[2] = "дві ";
+            frac20[1] = "один";
+            frac20[2] = "дві";
         }
 
         StringBuilder r = new StringBuilder(hunds[num / 100]);
@@ -134,8 +134,10 @@ public class UahParse
     {
         if (val % 10 == 1)
             return "копійка";
+
         else if (val % 10 > 1 && val % 10 < 5)
-            return "копійки";
+                return "копійки";
+
         else return "копійок";
     }
 }
