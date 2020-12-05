@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Text;
+using Task;
 
-public static class UahParse
+public static class UahParse : IParse
 {
     private static string[] hunds =
     {
@@ -27,7 +28,7 @@ public static class UahParse
     {
         string[] frac20 =
         {
-                "", "один", "два", "три", "чотири", "п'ять", "шість",
+                "", "одна", "два", "три", "чотири", "п'ять", "шість",
                 "сім", "вісімь", "дев'ять", "десять", "одинадцать",
                 "дванадцять", "тринадцять", "чотирнадцять", "п'ятнадцять",
                 "шістнадцять", "сімнадцять", "вісімнадцять", "дев'ятнадцять"
