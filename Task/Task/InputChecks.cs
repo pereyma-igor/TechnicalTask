@@ -87,7 +87,7 @@ namespace Task
             }
             int currency = Int32.Parse(strCurrency);
             int coins = Int32.Parse(strCoins);
-            Console.WriteLine($"{UahParse.Str(currency)}{UahParse.Currency(currency)} {UahParse.Str(coins).ToLower()}{UahParse.Coins(coins)}");
+            Console.WriteLine($"{UsdParse.Str(currency)}{UsdParse.Currency(currency)} {UsdParse.Str(coins).ToLower()}{UsdParse.Coins(coins)}");
         }
 
     }
