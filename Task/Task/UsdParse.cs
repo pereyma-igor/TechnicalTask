@@ -11,16 +11,16 @@ public static class UsdParse
         };
     private static string[] tens =
     {
-            "", "ten ", "twenty ", "thirty ", "fourty ", "fifty ",
-            "sixty ", "seventy ", "eighty ", "ninety "
+            "", "ten ", "twenty-", "thirty-", "fourty-", "fifty-",
+            "sixty-", "seventy-", "eighty-", "ninety-"
         };
 
     /// <summary>
-    /// перевод числа з урахуванням закінчення
+    /// Number translation with ending
     /// </summary>
     /// <param name="val">Число</param>
-    /// <param name="one">рід іменника в однині</param>
-    /// <returns>Переводить число, враховуючи закінчення</returns>
+    /// <param name="one">The genus of the noun in the singular</param>
+    /// <returns>Translates a number, given the ending</returns>
     public static string Str(int val, bool male, string one, string two)
     {
         string[] frac20 =
@@ -61,12 +61,12 @@ public static class UsdParse
 
 
     /// <summary>
-    /// Вибір правильного відмінника закінчення іменника
+    /// Choosing the correct noun ending
     /// </summary>
-    /// <param name="val">Число</param>
-    /// <param name="one">Форма іменника в єдиному числі</param>
-    /// <param name="two">Форма іменника від двох до чотирьох</param>
-    /// <returns>Повертає закінчення іменника,яке відповідає відміннику</returns>
+    /// <param name="val">Number</param>
+    /// <param name="one">The form of the noun in the singular</param>
+    /// <param name="two">The form of the noun is different</param>
+    /// <returns>Returns the ending of a noun that corresponds to an excellent</returns>
     public static string Case(int val, string one, string two)
     {
         int t = (val % 100 > 20) ? val % 10 : val % 20;
@@ -79,14 +79,13 @@ public static class UsdParse
     }
 
     /// <summary>
-    /// Перевід цілого числа в рядок
+    /// Convert an integer to a string
     /// </summary>
-    /// <param name="val">Число</param>
-    /// <returns>Повертає стрінг числа</returns>
+    /// <param name="val">Number</param>
+    /// <returns>String</returns>
     public static string Str(int val)
     {
-        bool minus = false;
-        if (val < 0) { val = -val; minus = true; }
+        if (val < 0) { val = -val;}
 
         int n = (int)val;
 
@@ -98,7 +97,7 @@ public static class UsdParse
 
         n /= 1000;
 
-        r.Insert(0, UsdParse.Str(n, false, " thousand", " thousands"));
+        r.Insert(0, UsdParse.Str(n, false, " thousand", " thousand"));
         n /= 1000;
 
         r.Insert(0, UsdParse.Str(n, true, " million", " millions"));
@@ -107,7 +106,7 @@ public static class UsdParse
         r.Insert(0, UsdParse.Str(n, true, " billion", " billions"));
         n /= 1000;
 
-        r[0] = char.ToUpper(r[0]); //робимо першу букву великою
+        r[0] = char.ToUpper(r[0]); // capitalize the first letter
 
         if (val % 10 == 1)
             return $"{r.ToString()}";
@@ -116,6 +115,11 @@ public static class UsdParse
         else return $"{r.ToString()}";
     }
 
+    /// <summary>
+    /// Method for calling verbal ending after converting to dollar
+    /// </summary>
+    /// <param name="val">Number</param>
+    /// <returns>If the singular is dollar / if the plural is dollars</returns>
     public static string Currency(int val)
     {
         if (val % 10 == 1)
@@ -123,6 +127,11 @@ public static class UsdParse
         else return "dollars";
     }
 
+    /// <summary>
+    /// Method for calling verbal ending after converting to cents
+    /// </summary>
+    /// <param name="val">Number</param>
+    /// <returns>If the singular is cent / if the plural is cents</returns>
     public static string Coins(int val)
     {
         if (val % 10 == 1)

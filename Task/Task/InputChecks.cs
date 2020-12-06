@@ -41,9 +41,11 @@ namespace Task
         public static void CheckUkrainianNumbers()
         {
             Console.WriteLine("Введіть число в форматі xxxxxx,xx! Число не повинне бути більшим за 2147483647,00");
-            string str = Convert.ToString(Console.ReadLine());
             
-            while (!double.TryParse(str, out _) || str[str.Length - 3] != ',' || double.Parse(str) > 2147483647.00)
+            string str = Convert.ToString(Console.ReadLine());
+            while (!double.TryParse(str, out _) || str[str.Length - 3] != ',' 
+                || double.Parse(str) > 2147483647.00 
+                || double.Parse(str) <0 )
             {
                 Console.Clear();
                 Console.WriteLine("Невірно введене число! \n Введіть число в форматі xxxxxx,xx! Число не повинне бути більшим за 2147483647,00");
@@ -51,7 +53,8 @@ namespace Task
             }
 
             Console.Clear();
-            Console.WriteLine(double.Parse(str));
+            Console.WriteLine($"Ви ввели число: {double.Parse(str)}");
+
             string strCurrency = "";
             string strCoins = "";
             
@@ -62,30 +65,39 @@ namespace Task
                 else if (i > str.Length - 3)
                     strCoins += str[i];
             }
+
             int currency = Int32.Parse(strCurrency);
             int coins = Int32.Parse(strCoins);
-            if (currency == 0 && coins != 0)
-                Console.WriteLine($"{UahParse.Str(coins)}{UahParse.Currency(coins)}");
-            else if (currency != 0 && coins == 0)
-                Console.WriteLine($"{UahParse.Str(coins)}{UahParse.Currency(coins)}");
+
+            if (coins == 0)
+                Console.WriteLine($"{UahParse.Str(currency)}{UahParse.Currency(currency)}");
+            else if (currency == 0)
+                Console.WriteLine($"{UahParse.Str(coins).ToLower()}{UahParse.Coins(coins)}");
             else
                 Console.WriteLine($"{UahParse.Str(currency)}{UahParse.Currency(currency)} {UahParse.Str(coins).ToLower()}{UahParse.Coins(coins)}");
         }
 
+        /// <summary>
+        /// A method that checks the correctness of the input of the Ukrainian number by the user and calls the method to write this number
+        /// </summary>
         public static void CheckEnglishNumbers()
         {
             Console.Clear();
             Console.WriteLine("Enter a number in the format xxxxxx.xx! The number should not exceed 2147483647.00");
+
             string str = Convert.ToString(Console.ReadLine());
-            while (str[^3] != '.'|| !double.TryParse(str.Replace('.', ','), out _) ||
-                double.Parse(str.Replace('.', ',')) > 2147483647.00)
+            while (str[^3] != '.'|| !double.TryParse(str.Replace('.', ','), out _) 
+                || double.Parse(str.Replace('.', ',')) > 2147483647.00
+                || double.Parse(str.Replace('.', ',')) < 0)
             {
                 Console.Clear();
                 Console.WriteLine("Invalid number entered! \nEnter a number in the format xxxxxx.xx! The number should not exceed 2147483647.00");
                 str = Convert.ToString(Console.ReadLine());
             }
+
             Console.Clear();
-            Console.WriteLine(double.Parse(str.Replace('.', ',')));
+            Console.WriteLine($"You entered a number: {double.Parse(str.Replace('.', ','))}");
+
             string strCurrency = "";
             string strCoins = "";
             for (int i = 0; i < str.Length; i++)
@@ -95,9 +107,16 @@ namespace Task
                 else if (i > str.Length - 3)
                     strCoins += str[i];
             }
+
             int currency = Int32.Parse(strCurrency);
             int coins = Int32.Parse(strCoins);
-            Console.WriteLine($"{UsdParse.Str(currency)}{UsdParse.Currency(currency)} {UsdParse.Str(coins).ToLower()}{UsdParse.Coins(coins)}");
+
+            if(coins == 0)
+                Console.WriteLine($"{UsdParse.Str(currency)}{UsdParse.Currency(currency)}");
+            else if(currency == 0)
+                Console.WriteLine($"{UsdParse.Str(coins).ToLower()}{UsdParse.Coins(coins)}");
+            else 
+                Console.WriteLine($"{UsdParse.Str(currency)}{UsdParse.Currency(currency)} and {UsdParse.Str(coins).ToLower()}{UsdParse.Coins(coins)}");
         }
 
     }

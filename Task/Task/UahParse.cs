@@ -38,6 +38,7 @@ public class UahParse
         if (0 == num) return "";
         if (num < 0) throw new ArgumentOutOfRangeException("val", "Параметр не може бути від'ємним");
         if (num > 2147483647) throw new ArgumentOutOfRangeException("val", "Параметр не може бути більшим за 2147483647.00");
+        
         if (!male)
         {
             frac20[1] = "один";
@@ -90,10 +91,7 @@ public class UahParse
     /// <returns>Повертає стрінг числа</returns>
     public static string Str(int val)
     {
-        bool minus = false;
-        if (val < 0) { val = -val; minus = true; }
-
-        int n = (int)val;
+        int n = val;
 
         StringBuilder r = new StringBuilder();
 
@@ -106,7 +104,7 @@ public class UahParse
         r.Insert(0, UahParse.Str(n, false, " тисяча", " тисячі", " тисяч"));
         n /= 1000;
 
-        r.Insert(0, UahParse.Str(n, true, " міліон", " міліонів", " міліонів"));
+        r.Insert(0, UahParse.Str(n, false, " мілйон", " мілйонів", " мілйонів"));
         n /= 1000;
 
         r.Insert(0, UahParse.Str(n, true, " міліард", " міліардів", " міліардів"));
@@ -121,6 +119,11 @@ public class UahParse
         else return $"{r.ToString()}";
     }
 
+    /// <summary>
+    /// Метод для виклику словесного закінчення після конвертації гривень
+    /// </summary>
+    /// <param name="val">Число</param>
+    /// <returns>Якщо однина гривня/ якщо множина гривень або гривні</returns>
     public static string Currency(int val)
     {
         if (val % 10 == 1)
@@ -130,6 +133,11 @@ public class UahParse
         else return "гривень";
     }
 
+    /// <summary>
+    /// Метод для виклику словесного закінчення після конвертації центів
+    /// </summary>
+    /// <param name="val">Число</param>
+    /// <returns>Якщо однина cent/ якщо множина cents</returns>
     public static string Coins(int val)
     {
         if (val % 10 == 1)
