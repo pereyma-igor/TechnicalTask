@@ -107,7 +107,7 @@ public class UahParse
         r.Insert(0, UahParse.Str(n, false, " мілйон", " мілйонів", " мілйонів"));
         n /= 1000;
 
-        r.Insert(0, UahParse.Str(n, true, " міліард", " міліардів", " міліардів"));
+        r.Insert(0, UahParse.Str(n, true, " міліард", " міліарди", " міліардів"));
         n /= 1000;
 
         r[0] = char.ToUpper(r[0]); //робимо першу букву великою
